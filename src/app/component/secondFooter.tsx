@@ -11,7 +11,7 @@ const poppins = Poppins({
 const SecondFooter = () => {
   return (
   <footer className='xl:px-[300px] py-6 flex justify-between items-center'>
-          <p className={`${poppins.className} text-sm text-[#9A9CAA]`}>@ 2021 - Blogy - Designed & Develop by <span className='text-[#272343]'>Zakirsoft</span></p>
+          <p className={`${poppins.className} text-sm text-[#9A9CAA]`}>@ 2021 - Blogy - Designed & Develop by <span className='text-[#272343]'>Abdul Wasay</span></p>
           <Image
               alt='visa'
               width={227}

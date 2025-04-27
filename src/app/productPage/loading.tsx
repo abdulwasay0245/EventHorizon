@@ -1,5 +1,7 @@
 export default function Loading() {
-    return    <main>
+    return 
+    (
+        <main>
             
 
 
@@ -8,4 +10,5 @@ export default function Loading() {
 </div>
 
         </main>
+    )
 }

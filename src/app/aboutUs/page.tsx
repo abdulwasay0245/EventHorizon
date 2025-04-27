@@ -1,7 +1,17 @@
+'use client'
 import Image from 'next/image'
 import React from 'react'
-
-
+import { getProductSanity,  } from '../component/sanityFetch'
+import Loading from '../loading'
+import {useState, useEffect} from "react"
+interface Product{
+      _id: string;
+      name: string;
+      price: number;
+      category: string;
+      imageUrl: string;
+      isNew: boolean;
+    }
 const data = [
     {
         address: "/Delivery.png",
@@ -29,21 +39,52 @@ const data = [
      },
  ]
 const AboutUs = () => {
+    const [product, setproduct] = useState<Product | null >(null)
+    const [loading, setLoading] = useState(true)
+    useEffect(() => {
+        const fetchedData = async () => {
+            try {
+                setLoading(true);
+                const fetchedProduct = await getProductSanity();
+                const slicedProducts = fetchedProduct.slice(0 , 40)
+                const randomImage = slicedProducts[Math.floor(Math.random() * slicedProducts.length)]
+                setproduct(randomImage)
+
+            }
+            catch (error) {
+                console.log(error)
+            }
+            finally {
+                setLoading(false)
+            }
+      }
+    fetchedData()
+    }, [])
+    
   return (
     <main className='justify-self-center flex flex-col gap-[200px] py-[100px]'>
           <section className='flex flex-col lg:flex-row justify-center gap-8'>
               <div className='bg-[#007580] font-bold flex flex-col gap-72 py-16 px-16 text-white'>
                   <div className='flex flex-col gap-2'>
-                      <h1 className='text-[32px]'>About Us - Comforty</h1>
-                      <p className='lg:w-[495px]'>At Comforty, we believe that the right chair can transform your space and elevate your comfort. Specializing in ergonomic design, premium materials, and modern aesthetics, we craft chairs that seamlessly blend style with functionality. </p>
+                      <h1 className='text-[32px]'>About Us - Event Horizon</h1>
+                      <p className='lg:w-[495px]'>At Event Horizon, we believe that the universe isn’t the limit — it’s just the beginning.
+                        Specializing in space-inspired merchandise, premium quality, and stellar designs, we craft products that merge cosmic aesthetics with everyday functionality. Gear up and explore the unknown in style.
+                        </p>
                   </div>
                   <button className='py-4 px-8 bg-[#218b94] self-start'>View collection</button>
               </div>
-              <Image
-                  alt='image'
+              {loading ? (
+                  <Loading/>
+              ) :
+                  product && (
+                      <Image src={product.imageUrl}
+                      alt='image'
                   width={619}
-                  height={478}
-                 src="/products/Image.png"></Image>
+                  height={478}></Image>
+                  )
+              }
+              
+      
           </section>
 
           <section className=' flex flex-col items-center gap-6'>

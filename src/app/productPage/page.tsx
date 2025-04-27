@@ -1,6 +1,7 @@
 import React from 'react'
 import AllProducts from '../component/allProduct'
 import Subscribe from '../component/Subscribe'
+
 const ProductPage = () => {
   return (
       <main>

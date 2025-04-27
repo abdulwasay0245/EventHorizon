@@ -1,10 +1,15 @@
 import Image from 'next/image'
 import React from 'react'
 import ProductInfo from '../component/data/products'
+import AllProducts from '../component/allProduct'
+import Products from '../component/products'
+
 const SingleProduct = () => {
-  return (
+    return (
+      
       <main className='jusify-self-center flex flex-col items-center py-[100px] gap-24'>
-          <section className='flex flex-col  lg:flex-row gap-20'>
+            <section className='flex flex-col  lg:flex-row gap-20'>
+                
               <Image
                   alt='main'
                   width={675}
@@ -13,6 +18,7 @@ const SingleProduct = () => {
               className='md:block hidden'>
                   
               </Image>
+              
               <Image
                   alt='main'
                   width={350}

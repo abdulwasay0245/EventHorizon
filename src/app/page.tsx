@@ -10,6 +10,7 @@ import { client } from "../sanity/lib/client";
 import { product } from "@/sanity/schemaTypes/product";
 import Loading from "./loading";
 
+
 import { useState, useEffect } from "react";
 const getProduct = async () => {
   try {
@@ -18,16 +19,17 @@ const getProduct = async () => {
         price,
         name,
         category,
-        "imageUrl": image.asset->url
+        "imageUrl":image.asset->url,
         isNew,
+        }
+        `);
+        
+        return products;
+      } catch (error) {
+        console.error('Error fetching products:', error);
+        return []; 
       }
-    `);
-    
-    return products;
-  } catch (error) {
-    console.error('Error fetching products:', error);
-    return []; 
-  }
+      
 };
 interface product{
   _id: string;
@@ -41,7 +43,7 @@ interface product{
 export default function Home() {
   const [products, setProducts] = useState<product[]>([]);
   const [isLoading, setIsLoading] = useState(true); // Add isLoading state
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -54,26 +56,29 @@ export default function Home() {
         setIsLoading(false); // Set loading to false after fetching (success or failure)
       }
     };
-
+    
     fetchData();
   }, []);
 
   return (
+    // <div>
+    //   {isLoading ? (
+    //     <Loading /> // Render Loading component while loading
+    //   ) : (
+    //     products.map(
+    //       (product:product) => (
+    //         <div key={product._id}>
+    //           <h3>{product.name}</h3>
+    //           <p>Price: ${product.price}</p>
+    //           <p>Category: {product.category}</p>
+    //           <img src={product.imageUrl } alt={product.name} />
+    //         </div>
+    //       )
+    //     )
+    //   )}
+    // </div>
     <div>
-      {isLoading ? (
-        <Loading /> // Render Loading component while loading
-      ) : (
-        products.filter((product) => product.isNew == false).map(
-          (product: product) => (
-            <div key={product._id}>
-              <h3>{product.name}</h3>
-              <p>Price: ${product.price}</p>
-              <p>Category: {product.category}</p>
-              <Image src={product.imageUrl} alt="wasay" height={100} width={100}></Image>
-            </div>
-          )
-        )
-      )}
+      <Hero></Hero>
     </div>
   );
 }

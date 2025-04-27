@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-
+import { FaQuestionCircle } from "react-icons/fa";
 const Header = () => {
   return (
       <header>
-          <div className='bg-[#272343] text-white flex flex-col sm:flex-row gap-5 items-center justify-between py-[14px] px-24 md:px-32 lg:px-52 2xl:px-[300px]'>
+          <div className='bg-[radial-gradient(circle,_white_8%,_black_50%)] text-white flex flex-col sm:flex-row gap-5 items-center justify-between py-[14px] px-24 md:px-32 lg:px-52 2xl:px-[300px]'>
               <div className='flex gap-2  items-center  '>
                   <Image
                       alt='tick'
@@ -29,14 +29,7 @@ const Header = () => {
                   </div>
                   <Link href="./faq"><p className='opacity-70 hover:opacity-100'>Faq</p></Link>
                   <div className='flex gap-[6px] items-center'>
-                      <Image
-                          alt='exlaim'
-                          width={16}
-                          height={16}
-                          src="/exclaim.png"
-                          className='opacity-70 hover:opacity-100'>
-                          
-                      </Image>
+                     <FaQuestionCircle />
                       <p className='opacity-70 hover:opacity-100'>Need Help</p>
                   </div>
               </div>
@@ -84,10 +77,10 @@ const Header = () => {
 
           <nav className='flex flex-col items-center gap-12 md:flex-row md:justify-between py-[14px] px-24 md:px-32 lg:px-52 2xl:px-[300px] border-b'>
               <ul className='flex gap-8 text-[14px] font-medium text-[#007580]'>
-                 <Link href="/"> <li>Home</li></Link>
-                 <Link href="home"> <li>Shop</li></Link>
+                <button> <Link href="/"> <li>Home</li></Link></button>
+                 <Link href=" "> <li>Shop</li></Link>
                  <Link href="./productPage"> <li>Product</li></Link>
-                 <Link href="home"> <li>Pages</li></Link>
+                 <Link href="not-found"> <li>Pages</li></Link>
                  <Link href="./aboutUs"> <li>About</li></Link> 
               </ul>
               <div className='flex gap-2 text-[14px]'>
