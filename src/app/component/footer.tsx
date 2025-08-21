@@ -11,7 +11,7 @@ const Footer = () => {
                                      alt='logo'
                                      width={70}
                                      height={70}
-                        src="/eventhorizon.png"></Image>
+                        src="/eventhorizon.svg"></Image>
 
                 <p className="text-base leading-relaxed text-gray-600 mt-7">Bringing quality and style to your doorstep. Shop with confidence.</p>
 

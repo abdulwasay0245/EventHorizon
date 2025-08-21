@@ -5,6 +5,7 @@ import { client } from '@/sanity/lib/client';
 import Products from './products';
 import { useEffect, useState } from 'react';
 import Loading from '../loading';
+import Link from 'next/link';
    const getProduct = async () => {
       try {
          const products = await client.fetch(`
@@ -55,7 +56,9 @@ const Hero = () => {
               <h1 className='text-4xl lg:text-[60px] font-bold leading-none  lg:w-[557px]'>Best Space design
 Collection for you.</h1>
               </div>
-              <button className='py-[14px] px-[24px] bg-[#029FAE] flex gap-2 items-center w-[170px] text-white rounded-lg'>Show Now <span className='text-[24px]'> &#8594;</span></button>
+        <Link href={"/productPage"}>
+        <button className='py-[14px] px-[24px] bg-[#029FAE] flex gap-2 items-center w-[170px] text-white rounded-lg'>Shop Now <span className='text-[24px]'> &#8594;</span></button>
+        </Link>
       </article>
       {loading ? (
         <Loading/>

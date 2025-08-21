@@ -40,14 +40,15 @@ const Header = () => {
 
 
           <div className='bg-[#F0F2F3] flex justify-between items-center py-5 px-10 xsm:px-16 sm:px-24 md:px-32 lg:px-52 2xl:px-[300px]'>
-              <div className='flex gap-2'>
+              
                   <Image
                       alt='logo'
-                      width={70}
-                      height={70}
-                      src="/eventhorizon.png"></Image>
+                      width={100}
+                      height={100}
+                  src="/eventhorizon.svg"
+                  ></Image>
            
-              </div>
+              
              
              <Link href="./cart">
               <div className='bg-white px-4 py-[11px] rounded-lg flex items-center text-center gap-2'>
