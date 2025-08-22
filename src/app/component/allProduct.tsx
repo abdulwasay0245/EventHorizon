@@ -14,6 +14,7 @@ const getProduct = async () => {
   try {
     const products = await client.fetch(`
       *[_type == "product"]{
+        _id,
         price,
         name,
         category,
@@ -30,7 +31,7 @@ const getProduct = async () => {
       
 };
 interface product{
-  _id: string;
+  _id: number;
   name: string;
   price: number;
   category: string;
@@ -64,7 +65,7 @@ const AllProducts = () => {
       <div className='grid lg:grid-cols-4 gap-5 justify-self-center'>
           
                 {products.filter((products)=> products.category === 'event').map((info) =>
-              <Link href="/singleProduct" key={info._id}>
+              <Link href={`/${info._id}`} key={info._id}>
                  <div className='justify-self-center' >
           <div className=' w-[312px] h-[312px] bg-cover pt-5 pl-5'
           style={{backgroundImage: `url(${info.imageUrl})`}}>
