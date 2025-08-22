@@ -44,6 +44,9 @@ const AllProducts = () => {
     const [products, setProducts] = useState<product[]>([]);
     const [isLoading, setIsLoading] = useState(true); // Add isLoading state
     
+  const handleFilter = () => {
+    console.log("filter")
+  }
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -61,7 +64,11 @@ const AllProducts = () => {
     }, []);
     return (
         <section className='flex flex-col gap-8 justify-self-center'>
-            <h1 className='text-[#272343] font-semibold text-[32px]'>All Products</h1>
+        <h1 className='text-[#272343] font-semibold text-[32px]'>All Products</h1>
+        <div>
+          <input  type="text" placeholder='Filter' className='w-64' />
+          <button onClick={handleFilter} className='bg-blue-600 py-2 px-6 text-white rounded-md'>Filter</button>
+        </div>
       <div className='grid lg:grid-cols-4 gap-5 justify-self-center'>
           
                 {products.filter((products)=> products.category === 'event').map((info) =>
