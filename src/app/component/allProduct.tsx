@@ -66,13 +66,24 @@ const AllProducts = () => {
     return (
         <section className='flex flex-col gap-8 justify-self-center'>
         <h1 className='text-[#272343] font-semibold text-[32px]'>All Products</h1>
-        <div>
-          <input value={filter} onChange={(e)=>setFilter(e.target.value)} type="text" placeholder='Filter' className='w-64' />
-          <button onClick={handleFilter} className='bg-blue-600 py-2 px-6 text-white rounded-md'>Filter</button>
-        </div>
+       <div>
+  <label htmlFor="category" className="mr-2">Choose Category:</label>
+  <select
+    id="category"
+    value={filter}
+    onChange={(e) => setFilter(e.target.value)}
+    className="w-64 p-2 border rounded-md"
+  >
+    <option value="all">All</option>
+    <option value="event">Event</option>
+    <option value="furniture">Furniture</option>
+    <option value="electronics">Electronics</option>
+    {/* you can add more categories as needed */}
+  </select>
+</div>
       <div className='grid lg:grid-cols-4 gap-5 justify-self-center'>
           
-          {products.filter((products) => {
+          {[...products, ...products, ...products, ...products].filter((products ) => {
             if(filter == "all") return true
             return products.category === filter
           }).map((info) =>
