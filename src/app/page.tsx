@@ -1,84 +1,88 @@
 'use client'
-import Image from "next/image";
-import Hero from "./component/hero";
-import Logosection from "./component/logoSection";
-import ProductSection from "./component/productSection";
-import TopCategory from "./component/topCategory";
-import ExploreSection from "./component/exploreSection";
-import OurProducts from "./component/ourProducts";
-import { client } from "../sanity/lib/client";
-import { product } from "@/sanity/schemaTypes/product";
-import Loading from "./loading";
-
-
-import { useState, useEffect } from "react";
-const getProduct = async () => {
-  try {
-    const products = await client.fetch(`
-      *[_type == "product"]{
-        price,
-        name,
-        category,
+import Image from 'next/image'
+import React from 'react'
+import logos from './component/data/logos';
+import { client } from '@/sanity/lib/client';
+import Products from './component/products';
+import { useEffect, useState } from 'react';
+import Loading from './loading';
+import Link from 'next/link';
+   const getProduct = async () => {
+      try {
+         const products = await client.fetch(`
+      *[_type == "product"][0]{
+       
         "imageUrl":image.asset->url,
-        isNew,
+        
         }
         `);
         
-        return products;
+         return products;
       } catch (error) {
-        console.error('Error fetching products:', error);
-        return []; 
-      }
-      
+         console.error('Error fetching products:', error);
+         return [];
+       }
+   
 };
-interface product{
-  _id: string;
-  name: string;
-  price: number;
-  category: string;
-  imageUrl: string;
-  isNew: boolean;
+getProduct()
+   
+interface Products{
+  imageUrl: string
 }
-
-export default function Home() {
-  const [products, setProducts] = useState<product[]>([]);
-  const [isLoading, setIsLoading] = useState(true); // Add isLoading state
-  
-  useEffect(() => {
-    const fetchData = async () => {
+const Hero = () => {
+  const [product, setProduct] = useState<Products | null>(null);
+  const [loading , setLoading] = useState(true)
+  useEffect (() => {
+    const fetchedData = async () => {
       try {
-        setIsLoading(true); // Set loading to true before fetching
+        setLoading(true)
         const fetchedProducts = await getProduct();
-        setProducts(fetchedProducts);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      } finally {
-        setIsLoading(false); // Set loading to false after fetching (success or failure)
+        setProduct(fetchedProducts)
       }
-    };
-    
-    fetchData();
-  }, []);
-
+      catch (error) {
+        console.log(error)
+      }
+      finally {
+        setLoading(false)
+      }
+    }
+    fetchedData()
+  
+  },[])
   return (
-    // <div>
-    //   {isLoading ? (
-    //     <Loading /> // Render Loading component while loading
-    //   ) : (
-    //     products.map(
-    //       (product:product) => (
-    //         <div key={product._id}>
-    //           <h3>{product.name}</h3>
-    //           <p>Price: ${product.price}</p>
-    //           <p>Category: {product.category}</p>
-    //           <img src={product.imageUrl } alt={product.name} />
-    //         </div>
-    //       )
-    //     )
-    //   )}
-    // </div>
-    <div>
-      <Hero></Hero>
-    </div>
-  );
+      <main className='bg-[#F0F2F3] rounded-b-[48px] items-center flex flex-col lg:flex-row  justify-center py-36 px-[70px] max-w-[1500px] justify-self-center'>
+          <article className='flex flex-col gap-6 '>
+              <div className='flex flex-col gap-4 text-[#272343]'>
+                      <p className='text-[14px] '>Welcome to Event Horizon</p>
+              <h1 className='text-4xl lg:text-[60px] font-bold leading-none  lg:w-[557px]'>Best Space design
+Collection for you.</h1>
+              </div>
+        <Link href={"/productPage"}>
+        <button className='py-[14px] px-[24px] bg-[#029FAE] flex gap-2 items-center w-[170px] text-white rounded-lg'>Shop Now <span className='text-[24px]'> &#8594;</span></button>
+        </Link>
+      </article>
+      {loading ? (
+        <Loading/>
+      ) : 
+          product && (
+        <Image
+          src={product.imageUrl}
+          alt='Product Image'
+          width={434}
+          height={584}
+          className='hidden lg:block mix-blend-multiply'
+        />
+      )}
+              {/* <Image
+                  alt='chair'
+                  src={product.imageUrl}
+                  width={434}
+              height={584}
+          className='hidden lg:block'>
+              
+                  </Image> */}
+    </main>
+  )
 }
+
+export default Hero
