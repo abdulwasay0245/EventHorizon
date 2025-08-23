@@ -78,9 +78,8 @@ const Header = () => {
 
           <nav className='flex flex-col items-center gap-12 md:flex-row md:justify-between py-[14px] px-24 md:px-32 lg:px-52 2xl:px-[300px] border-b'>
               <ul className='flex gap-8 text-[14px] font-medium text-[#007580]'>
-                <button> <Link href="/"> <li>Home</li></Link></button>
-                 <Link href=" "> <li>Shop</li></Link>
-                 <Link href="./productPage"> <li>Product</li></Link>
+                 <Link href="/"> <li>Home</li></Link>
+                 <Link href="./shop "> <li>Shop</li></Link>
                  <Link href="not-found"> <li>Pages</li></Link>
                  <Link href="./aboutUs"> <li>About</li></Link> 
               </ul>
