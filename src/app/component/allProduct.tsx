@@ -72,7 +72,10 @@ const AllProducts = () => {
         </div>
       <div className='grid lg:grid-cols-4 gap-5 justify-self-center'>
           
-                {products.filter((products)=> products.category === 'event').map((info) =>
+          {products.filter((products) => {
+            if(filter == "all") return true
+            return products.category === filter
+          }).map((info) =>
               <Link href={`/${info._id}`} key={info._id}>
                  <div className='justify-self-center' >
           <div className=' w-[312px] h-[312px] bg-cover pt-5 pl-5'
