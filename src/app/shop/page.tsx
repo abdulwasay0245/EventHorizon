@@ -1,5 +1,5 @@
 import React from 'react'
-import AllProducts from '../component/allProduct'
+import AllProducts from '../component/AllProducts'
 import Subscribe from '../component/Subscribe'
 
 const ProductPage = () => {

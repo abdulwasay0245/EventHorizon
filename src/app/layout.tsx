@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "./component/header";
-import Footer from "./component/footer";
-import SecondFooter from "./component/secondFooter";
+import Header from "./component/Header";
+import Footer from "./component/Footer";
+import SecondFooter from "./component/SecondFooter";
 <link rel="icon" href="/favicon.ico" sizes="any" />
 
 

@@ -1,15 +1,12 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
-import ProductInfo from './data/products'
 import Link from 'next/link'
 import { client } from "@/sanity/lib/client";
 import { product } from "@/sanity/schemaTypes/product";
 import Loading from "../loading";
-
-
 import { useState, useEffect } from "react";
-import Products from './products';
+
 const getProduct = async () => {
   try {
     const products = await client.fetch(`

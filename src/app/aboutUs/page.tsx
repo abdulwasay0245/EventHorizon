@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
-import { getProductSanity,  } from '../component/sanityFetch'
+import { getProductSanity,  } from '../component/SanityFetch'
 import Loading from '../loading'
 import {useState, useEffect} from "react"
 interface Product{

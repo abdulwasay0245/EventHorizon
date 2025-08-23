@@ -3,7 +3,6 @@ import Image from 'next/image'
 import React from 'react'
 import logos from './component/data/logos';
 import { client } from '@/sanity/lib/client';
-import Products from './component/products';
 import { useEffect, useState } from 'react';
 import Loading from './loading';
 import Link from 'next/link';
@@ -73,14 +72,7 @@ Collection for you.</h1>
           className='hidden lg:block mix-blend-multiply'
         />
       )}
-              {/* <Image
-                  alt='chair'
-                  src={product.imageUrl}
-                  width={434}
-              height={584}
-          className='hidden lg:block'>
-              
-                  </Image> */}
+           
     </main>
   )
 }
