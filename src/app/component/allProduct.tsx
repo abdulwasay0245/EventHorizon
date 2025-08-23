@@ -42,7 +42,8 @@ interface product{
 
 const AllProducts = () => {
     const [products, setProducts] = useState<product[]>([]);
-    const [isLoading, setIsLoading] = useState(true); // Add isLoading state
+  const [isLoading, setIsLoading] = useState(true); // Add isLoading 
+  const [filter , setFilter] = useState("all")
     
   const handleFilter = () => {
     console.log("filter")
@@ -66,7 +67,7 @@ const AllProducts = () => {
         <section className='flex flex-col gap-8 justify-self-center'>
         <h1 className='text-[#272343] font-semibold text-[32px]'>All Products</h1>
         <div>
-          <input  type="text" placeholder='Filter' className='w-64' />
+          <input value={filter} onChange={(e)=>setFilter(e.target.value)} type="text" placeholder='Filter' className='w-64' />
           <button onClick={handleFilter} className='bg-blue-600 py-2 px-6 text-white rounded-md'>Filter</button>
         </div>
       <div className='grid lg:grid-cols-4 gap-5 justify-self-center'>
